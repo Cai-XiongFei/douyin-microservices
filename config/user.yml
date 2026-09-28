@@ -1,0 +1,11 @@
+server:
+  name: TiktokUserServer
+  host: 127.0.0.1
+  port: 18085
+
+JWT:
+  signingKey: signingKey
+
+etcd:
+  host: 127.0.0.1
+  port: 12379

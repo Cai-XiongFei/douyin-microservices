@@ -1,0 +1,5 @@
+redis:
+  host: 127.0.0.1
+  port: 16379
+  password: tiktokRedis
+  database: 0

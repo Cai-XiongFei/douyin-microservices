@@ -1,0 +1,11 @@
+﻿server:
+  name: TiktokRelationServer
+  host: 127.0.0.1
+  port: 18090
+
+etcd:
+  host: 127.0.0.1
+  port: 12379
+
+JWT:
+  signingKey: signingKey

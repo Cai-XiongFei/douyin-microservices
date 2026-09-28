@@ -1,0 +1,11 @@
+server:
+  name: TiktokCommentServer
+  host: 127.0.0.1
+  port: 18088
+
+etcd:
+  host: 127.0.0.1
+  port: 12379
+
+JWT:
+  signingKey: signingKey

@@ -1,0 +1,12 @@
+Minio:
+  Endpoint: 127.0.0.1:19000
+  AccessKeyId: tiktokMinio
+  SecretAccessKey: tiktokMinio
+  UseSSL: false
+
+  VideoBucketName: tiktok-videos
+  CoverBucketName: tiktok-video-covers
+  AvatarBucketName: tiktok-user-avatars
+  BackgroundImageBucketName: tiktok-user-backgrounds
+
+  ExpireTime: 3600

@@ -1,0 +1,14 @@
+server:
+  name: TiktokVideoServer
+  host: 127.0.0.1
+  port: 18086
+
+etcd:
+  host: 127.0.0.1
+  port: 12379
+
+JWT:
+  signingKey: signingKey
+
+video:
+  maxSizeLimit: 50

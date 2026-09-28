@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+option go_package = "relation";
+
+package relation;
+
+import "user.proto";
+
+// ==================== 关注或取消关注 ====================
+
+message RelationActionRequest {
+  string token = 1;       // 当前登录用户的 token
+  int64 to_user_id = 2;   // 要关注或取消关注的用户 ID
+  int32 action_type = 3;  // 1：关注，2：取消关注
+}
+
+message RelationActionResponse {
+  int32 status_code = 1;
+  string status_msg = 2;
+}
+
+// ==================== 关注列表 ====================
+
+message RelationFollowListRequest {
+  int64 user_id = 1; // 查询谁的关注列表
+  string token = 2;
+}
+
+message RelationFollowListResponse {
+  int32 status_code = 1;
+  string status_msg = 2;
+  repeated user.User user_list = 3;
+}
+
+// ==================== 粉丝列表 ====================
+
+message RelationFollowerListRequest {
+  int64 user_id = 1; // 查询谁的粉丝列表
+  string token = 2;
+}
+
+message RelationFollowerListResponse {
+  int32 status_code = 1;
+  string status_msg = 2;
+  repeated user.User user_list = 3;
+}
+
+// ==================== 好友列表 ====================
+// 两个人互相关注，才算好友。
+
+message RelationFriendListRequest {
+  int64 user_id = 1;
+  string token = 2;
+}
+
+message RelationFriendListResponse {
+  int32 status_code = 1;
+  string status_msg = 2;
+  repeated FriendUser user_list = 3;
+}
+
+message FriendUser {
+  string message = 1;          // 与该好友的最新聊天消息
+  int64 msg_type = 2;          // 0：对方发送；1：当前用户发送
+  int64 id = 3;
+  string name = 4;
+  int64 follow_count = 5;
+  int64 follower_count = 6;
+  bool is_follow = 7;
+  string avatar = 8;
+  string background_image = 9;
+  string signature = 10;
+  int64 total_favorited = 11;
+  int64 work_count = 12;
+  int64 favorite_count = 13;
+}
+
+// ==================== RPC 服务 ====================
+
+service RelationService {
+  rpc RelationAction(RelationActionRequest)
+      returns (RelationActionResponse);
+
+  rpc RelationFollowList(RelationFollowListRequest)
+      returns (RelationFollowListResponse);
+
+  rpc RelationFollowerList(RelationFollowerListRequest)
+      returns (RelationFollowerListResponse);
+
+  rpc RelationFriendList(RelationFriendListRequest)
+      returns (RelationFriendListResponse);
+}

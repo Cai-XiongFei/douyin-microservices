@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package favorite;
+
+option go_package = "favorite";
+
+import "video.proto";
+
+// 点赞或者取消点赞请求
+message FavoriteActionRequest {
+  string token = 1;
+  int64 video_id = 2;
+
+  // 1 表示点赞，2 表示取消点赞
+  int32 action_type = 3;
+}
+
+// 点赞或者取消点赞响应
+message FavoriteActionResponse {
+  int32 status_code = 1;
+  string status_msg = 2;
+}
+
+// 查询用户点赞视频列表
+message FavoriteListRequest {
+  int64 user_id = 1;
+  string token = 2;
+}
+
+// 用户点赞视频列表响应
+message FavoriteListResponse {
+  int32 status_code = 1;
+  string status_msg = 2;
+
+  // 直接复用 video.proto 中定义的 Video
+  repeated video.Video video_list = 3;
+}
+
+// 点赞 RPC 服务
+service FavoriteService {
+  rpc FavoriteAction(FavoriteActionRequest)
+      returns (FavoriteActionResponse);
+
+  rpc FavoriteList(FavoriteListRequest)
+      returns (FavoriteListResponse);
+}

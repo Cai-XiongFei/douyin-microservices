@@ -1,0 +1,22 @@
+server:
+  name: TiktokAPIServer
+  host: 0.0.0.0
+  port: 18089
+  maxRequestBodySizeMB: 60
+JWT:
+  signingKey: signingKey
+
+Etcd:
+  host: 127.0.0.1
+  port: 12379
+
+Hertz:
+  tls:
+    enable: false
+    keyFile: ""
+    certFile: ""
+    ALPN: false
+
+  http2:
+    enable: false
+

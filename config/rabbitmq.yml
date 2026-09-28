@@ -1,0 +1,11 @@
+rabbitmq:
+  host: 127.0.0.1
+  port: 15672
+  username: tiktok
+  password: tiktokRabbitMQ
+  vhost: /
+  consumer:
+    # Retry a failed message at most three more times.
+    max_retries: 3
+    # Wait three seconds before each retry.
+    retry_delay_ms: 3000

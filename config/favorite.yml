@@ -1,0 +1,19 @@
+server:
+  name: TiktokFavoriteServer
+  host: 127.0.0.1
+  port: 18087
+
+etcd:
+  host: 127.0.0.1
+  port: 12379
+
+JWT:
+  signingKey: signingKey
+outbox:
+  batch_size: 20
+  poll_interval_ms: 500
+  lease_seconds: 30
+  publish_timeout_seconds: 5
+  max_retries: 10
+  base_retry_delay_ms: 1000
+  max_retry_delay_ms: 60000
